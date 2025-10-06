@@ -1,9 +1,29 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //form tiket
+  // form tiket
   var departure = "".obs;
   var arrival = "".obs;
+
+  // Slider
+  final sliderImages = [
+    "images/green_bus.png",
+    "images/red_bus.png",
+    "images/yellow_bus.png",
+  ];
+
+  // Menu Favorit
+  final menus = [
+    {"icon": Icons.confirmation_number, "title": "Pesan Tiket"},
+    {"icon": Icons.directions_bus, "title": " Informasi Kelas Armada"},
+    {"icon": Icons.info, "title": "Informasi Perusahaan"},
+    {"icon": Icons.shop, "title": " New Shantika Shop"},
+    {"icon": Icons.facebook, "title": "Sosial Media"},
+    {"icon": Icons.group, "title": "Informasi Agen"},
+    {"icon": Icons.credit_card, "title": "E-Member"},
+    {"icon": Icons.language, "title": "Website"},
+  ];
 
   // Riwayat tiket
   var history = [
@@ -12,7 +32,7 @@ class HomeController extends GetxController {
       "from": "Krapyak - Semarang",
       "to": "Gejayan - Sleman",
       "date": "11 Februari 2025 - 20:30",
-      "price": "Rp230.000",
+      "price": "230.000",
     }
   ].obs;
 

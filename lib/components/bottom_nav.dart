@@ -13,28 +13,27 @@ class Bottomnav extends StatelessWidget {
     MainMenuController controller = Get.find();
 
     return Obx(() => Container(
-      margin: const EdgeInsets.all(AppStyles.spaceXS),
+      margin: EdgeInsets.all(AppStyles.spaceXS),
       decoration: BoxDecoration(
         color: AppStyles.light,
-        borderRadius: BorderRadius.circular(AppStyles.radiusS),
+        // borderRadius: BorderRadius.circular(AppStyles.radiusS),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: AppStyles.dark.withOpacity(0.1),
             blurRadius: 10,
             spreadRadius: 2,
           ),
         ],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(AppStyles.radiusXL),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppStyles.primary,
+          backgroundColor: AppStyles.light,
           elevation: 0,
           currentIndex: controller.selectedIndex.value,
           onTap: controller.updateIndex,
-          selectedLabelStyle: AppStyles.profileText1,
-          unselectedLabelStyle: AppStyles.profileText1.copyWith(fontWeight: FontWeight.w500),
+          selectedLabelStyle: AppStyles.bottomnav.copyWith(fontWeight: FontWeight.bold),
+          unselectedLabelStyle: AppStyles.bottomnav.copyWith(fontWeight: FontWeight.w500),
           items: [
             BottomNavigationBarItem(
               icon: Icon(IconlyLight.home),
@@ -57,8 +56,8 @@ class Bottomnav extends StatelessWidget {
               label: 'Profil',
             ),
           ],
-          selectedItemColor: AppStyles.light,
-          unselectedItemColor: AppStyles.primaryLight,
+          selectedItemColor: AppStyles.primary,
+          unselectedItemColor: AppStyles.primary,
           selectedFontSize: 14,
           unselectedFontSize: 12,
         ),

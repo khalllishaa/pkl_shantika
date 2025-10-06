@@ -1,25 +1,40 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppStyles{
   // Color Apps
-  static const Color light = Color(0xFFF5F5F5);
+  static const Color light = Color(0xFFFFFFFF);
   static const Color dark = Color(0xFF191919);
   static const Color grey1 = Color(0xFF606060);
   static const Color grey2 = Color(0xFFE8E8E8);
   static const Color grey3 = Color(0xFF989696);
   static const Color primary = Color(0xFF292861);
+  static const Color secondary = Color(0xFF2196F3);
+  static const gradientMenu = LinearGradient(
+    colors: [Color(0xFF292861), Color(0xFF67717A)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+  static const gradientPromo = LinearGradient(
+    colors: [Color(0xFF2D3C8A), Color(0xFF3A4BA4)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
 
   // Text Style
-  static const TextStyle headingStyle = TextStyle(fontSize: 20, fontFamily: 'Poppins', fontWeight: FontWeight.bold, color: AppStyles.light);
-  static const TextStyle splashscreen = TextStyle(fontSize: 20, fontFamily: 'Times New Roman', fontWeight: FontWeight.bold, color: AppStyles.light);
-  static const TextStyle heading1 = TextStyle(fontSize: 20, fontFamily: 'Poppins', fontWeight: FontWeight.bold, color: AppStyles.dark);
-  static const TextStyle heading2 = TextStyle(fontSize: 12, fontFamily: 'Poppins', fontWeight: FontWeight.w500, color: AppStyles.grey1);
-  static const TextStyle welcome1 = TextStyle(fontSize: 30, fontFamily: 'Poppins', fontWeight: FontWeight.bold, color: AppStyles.light);
-  static const TextStyle welcome2 = TextStyle(fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.w500, color: AppStyles.light);
-  static const TextStyle lesson = TextStyle(fontSize: 13, fontFamily: 'Poppins', fontWeight: FontWeight.w500, color: AppStyles.light);
-  static const TextStyle profileText1 = TextStyle(fontSize: 14, fontFamily: 'Poppins', fontWeight: FontWeight.bold, color: AppStyles.dark);
-  static const TextStyle profileText2 = TextStyle(fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.w500, color: AppStyles.dark);
+  static final TextStyle bottomnav = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppStyles.primary);
+  static final TextStyle tiket1 = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppStyles.dark);
+  static final TextStyle tiket2 = GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold, color: AppStyles.dark);
+  static final TextStyle menufav = GoogleFonts.poppins(fontSize: 11, fontWeight: FontWeight.w500, color: AppStyles.dark);
+  static final TextStyle menufav2 = GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold, color: AppStyles.primary);
+  static final promoTitle = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold, color: light);
+  static final promoDesc = GoogleFonts.poppins(fontSize: 12, color: light);
+  static final promoDate = GoogleFonts.poppins(fontSize: 12, fontStyle: FontStyle.italic, color: light);
+  static final seeAll = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold, color: secondary);
+  static final riwayat = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppStyles.grey3);
+  static final riwayat2 = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold, color: AppStyles.dark);
 
   // Image & widget
   static const double logo = 200.0;
@@ -62,15 +77,15 @@ class AppStyles{
   static const double spaceXXS = 2.0;
   static const double spaceXS = 5.0;
   static const double spaceS = 10.0;
-  static const double spaceM = 15.0;
-  static const double spaceL = 20.0;
+  static const double spaceM = 12.0;
+  static const double spaceL = 200.0;
   static const double space = 28.0;
   static const double spaceXL = 45.0;
   static const double spaceXXL = 60.0;
   static const double spaceeXL = 100.0;
 
   // Border Radius
-  static const double radiusS = 10.0;
+  static const double radiusS = 8.0;
   static const double radiusM = 12.0;
   static const double radiusL = 16.0;
   static const double radiusXL = 20.0;

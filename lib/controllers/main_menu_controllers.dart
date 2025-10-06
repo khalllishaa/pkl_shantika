@@ -6,20 +6,19 @@ class MainMenuController extends GetxController{
 
   var selectedDate = DateTime.now().obs;
 
+  // void updateIndex(int index) {
+  //   if (index != selectedIndex.value) {
+  //     selectedIndex.value = index;
+  //   }
+  // }
+
   void updateIndex(int index) {
-    if (index != selectedIndex.value) {
-      selectedIndex.value = index;
-    }
+    print("Pindah ke index: $index"); // debug
+    selectedIndex.value = index;
   }
 
   void changeIndex(int index) {
     selectedIndex.value = index;
-  }
-
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
   }
 
 }
