@@ -32,8 +32,8 @@ class Bottomnav extends StatelessWidget {
           elevation: 0,
           currentIndex: controller.selectedIndex.value,
           onTap: controller.updateIndex,
-          selectedLabelStyle: AppStyles.bottomnav.copyWith(fontWeight: FontWeight.bold),
-          unselectedLabelStyle: AppStyles.bottomnav.copyWith(fontWeight: FontWeight.w500),
+          selectedLabelStyle: AppStyles.bottomnav.copyWith(fontWeight: FontWeight.w700),
+          unselectedLabelStyle: AppStyles.bottomnav2,
           items: [
             BottomNavigationBarItem(
               icon: Icon(IconlyLight.home),

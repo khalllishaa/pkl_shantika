@@ -46,22 +46,36 @@ class HomeController extends GetxController {
   ].obs;
 
   // Artikel
-  var articles = [
-    "PO New Shantika Tetap Jalan",
-    "Armada Dream Coach",
-    "Berita lainnya"
+  var articles = <Map<String, String>>[
+    {
+      "title": "PO New Shantika Tetap Jalan Selama Larangan",
+      "image": "images/bus1.png"
+    },
+    {
+      "title": "PO New Shantika Siapkan Armada Dream Coach",
+      "image": "images/bus2.png"
+    },
+    {
+      "title": "PO New Shantika Rilis Rute Baru",
+      "image": "images/bus3.png"
+    },
   ].obs;
 
-  // Testimoni
-  var testimonials = [
+  final testimonials = [
     {
       "name": "Esther Howard",
       "date": "13 Feb 2025",
+      "busClass": "Super Executive",
       "rating": 5,
       "review":
-      "Sangat menyenangkan melakukan perjalanan dengan bus Shantika. Supir baik, AC dingin, tidur nyenyak."
-    }
-  ].obs;
+      "Sangat menyenangkan melakukan perjalanan bersama bus Shantika. Supirnya baik dan ramah, ACnya dingin, dan saya bisa tertidur pulas.. :D",
+      "images": [
+        "images/testimoni.png",
+        "images/testimoni.png",
+        "images/testimoni.png",
+      ],
+    },
+  ];
 
   // Fungsi
   void searchTicket() {

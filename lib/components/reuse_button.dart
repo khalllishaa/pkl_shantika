@@ -10,17 +10,21 @@ class ReuseButton extends StatelessWidget {
   final bool isFullWidth;
   final double? fontSize;
   final double? radius;
+  final EdgeInsetsGeometry? contentPadding;
+  final EdgeInsetsGeometry? containerPadding;
 
   const ReuseButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.backgroundColor = AppStyles.primary,
+    this.backgroundColor = AppStyles.primary2,
     this.textColor = AppStyles.light,
     this.borderColor = Colors.transparent,
     this.isFullWidth = true,
     this.fontSize,
     this.radius,
+    this.contentPadding,
+    this.containerPadding,
   });
 
   @override
@@ -28,13 +32,13 @@ class ReuseButton extends StatelessWidget {
     final button = ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(
+        padding: contentPadding ?? EdgeInsets.symmetric(
           horizontal: AppStyles.paddingL,
           vertical: AppStyles.paddingM,
         ),
         backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius ?? AppStyles.radiusL),
+          borderRadius: BorderRadius.circular(radius ?? AppStyles.radiusXL),
           side: BorderSide(color: borderColor),
         ),
       ),
@@ -47,8 +51,13 @@ class ReuseButton extends StatelessWidget {
       ),
     );
 
-    return isFullWidth
-        ? SizedBox(width: double.infinity, child: button)
-        : button;
+    final wrappedButton = Container(
+      padding: containerPadding,
+      child: isFullWidth
+          ? SizedBox(width: double.infinity, child: button)
+          : button,
+    );
+
+    return wrappedButton;
   }
 }
