@@ -35,6 +35,7 @@ dependencies:
   iconly: ^1.0.1
   google_fonts: ^6.2.1
   carousel_slider: ^5.1.1
+  icons_plus: ^5.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -71,6 +72,10 @@ flutter:
     - images/yellow_bus.png
     - images/stars.png
     - images/promo.png
+    - images/bus1.png
+    - images/bus2.png
+    - images/bus3.png
+    - images/testimoni.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

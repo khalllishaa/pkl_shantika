@@ -5,6 +5,7 @@ import 'package:iconly/iconly.dart';
 import 'package:pkl_sahntikha/components/reuse_button.dart';
 import 'package:pkl_sahntikha/components/app_styles.dart';
 
+import '../components/custom_card.dart';
 import '../components/title_home.dart';
 import '../controllers/home_controllers.dart';
 
@@ -20,11 +21,15 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               _headerWithSearch(),
-              SizedBox(height: AppStyles.spaceL),
+              SizedBox(height: AppStyles.spaceeXL),
               _imageSlider(),
+              SizedBox(height: AppStyles.spaceM),
               SectionTitle(title: "Menu Favorit"),
+              SizedBox(height: AppStyles.spaceXXS),
               _menuFavorit(),
+              SizedBox(height: AppStyles.spaceS),
               _promoCard(),
+              SizedBox(height: AppStyles.spaceS),
               Row(
                 children: [
                   SectionTitle(title: "Riwayat"),
@@ -52,26 +57,40 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.only(left: AppStyles.paddingL, right: AppStyles.paddingL, top: AppStyles.paddingM),
-                child:
-                  Image.asset(
-                    "images/promo.png",
-                ),
+              SizedBox(height: AppStyles.spaceS),
+              _promoSection(),
+              SizedBox(height: AppStyles.spaceS),
+              Row(
+                children: [
+                  SectionTitle(title: "Artikel"),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.only(right: AppStyles.paddingL),
+                    child: Text(
+                      "Lihat Semua",
+                      style: AppStyles.seeAll,
+                    ),
+                  ),
+                ],
               ),
-              // Row(
-              //   children: [
-              //     SectionTitle(title: "Artikel"),
-              //     Spacer(),
-              //     Padding(
-              //       padding: EdgeInsets.only(right: AppStyles.paddingL),
-              //       child: Text(
-              //         "Lihat Semua",
-              //         style: AppStyles.seeAll,
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              SizedBox(height: AppStyles.spaceS),
+              _artikel(),
+              SizedBox(height: AppStyles.spaceS),
+              Row(
+                children: [
+                  SectionTitle(title: "Testimoni"),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.only(right: AppStyles.paddingL),
+                    child: Text(
+                      "Lihat Semua",
+                      style: AppStyles.seeAll,
+                    ),
+                  ),
+                ],
+              ),
+              _testimoni(),
+              SizedBox(height: AppStyles.spaceS),
             ],
           ),
         ),
@@ -79,13 +98,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // HEADER + SEARCH gabung
   Widget _headerWithSearch() {
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
-          height: 220,
+          height: 180,
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -98,7 +116,7 @@ class HomePage extends StatelessWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Padding(
-                  padding: EdgeInsets.only(top: AppStyles.paddingFont),
+                  padding: EdgeInsets.only(top: AppStyles.paddingXXL),
                   child: Image.asset(
                     "images/logo_shantika.png",
                     height: 75,
@@ -108,16 +126,18 @@ class HomePage extends StatelessWidget {
               Positioned(
                 top: 55,
                 right: 16,
-                child: Icon(Icons.notifications,
-                    color: AppStyles.light, size: 28),
+                child: Icon(
+                  Icons.notifications,
+                  color: AppStyles.light,
+                  size: 28,
+                ),
               ),
             ],
           ),
         ),
 
-        // Tambahkan form pencarian di luar Container header
         Positioned(
-          bottom: -180,
+          bottom: -165,
           left: 16,
           right: 16,
           child: _searchTicket(),
@@ -128,73 +148,101 @@ class HomePage extends StatelessWidget {
 
   // Cari Tiket
   Widget _searchTicket() {
-    return Container(
-      margin: EdgeInsets.only(top: AppStyles.paddingL),
+    return CustomCardContainer(
+      borderRadius: AppStyles.radiusXL,
       padding: EdgeInsets.all(AppStyles.paddingL),
-      decoration: BoxDecoration(
-        color: AppStyles.light,
-        borderRadius: BorderRadius.circular(AppStyles.radiusL),
-        boxShadow: [
-          BoxShadow(
-            color: AppStyles.dark.withOpacity(0.1),
-            blurRadius: 8,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Cari Tiket Bus", style: AppStyles.tiket2),
+          // Title
+          Center(
+            child: Text(
+              "Cari Tiket Bus",
+              style: AppStyles.tiket2.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
           SizedBox(height: AppStyles.spaceM),
-          _locationPicker("Keberangkatan", controller.departure),
-          SizedBox(height: AppStyles.spaceM),
-          _locationPicker("Tujuan", controller.arrival),
-          SizedBox(height: AppStyles.spaceM),
+          Stack(
+            children: [
+              Column(
+                children: [
+                  _locationPicker("Keberangkatan", controller.departure),
+                  Container(
+                    height: 1,
+                    color: AppStyles.grey3,
+                    margin: EdgeInsets.symmetric(
+                      vertical: AppStyles.paddingM,
+                      horizontal: AppStyles.paddingXXL,
+                    ),
+                  ),
+
+                  _locationPicker("Tujuan", controller.arrival),
+                ],
+              ),
+              Positioned(
+                right: 0,
+                top: 20,
+                bottom: 20,
+                child: Center(
+                  child: Icon(
+                    IconlyLight.swap,
+                    color: AppStyles.dark,
+                    size: AppStyles.iconM,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          SizedBox(height: AppStyles.spaceS),
+
+          // Button Cari Tiket
           ReuseButton(
             text: "Cari Tiket",
             onPressed: controller.searchTicket,
+            isFullWidth: true,
+            backgroundColor: AppStyles.primary,
           ),
         ],
       ),
     );
   }
 
+// Location Picker reusable
   Widget _locationPicker(String label, RxString obs) {
-    return Obx(() => Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Obx(() => Row(
       children: [
-        Text(label, style: AppStyles.tiket1),
-        SizedBox(height: AppStyles.spaceXS),
-        InkWell(
-          onTap: () {
-            obs.value = label == "Keberangkatan" ? "Semarang" : "Jakarta";
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade400),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Row(
-              children: [
-                Icon(Icons.location_on_outlined, color: Colors.grey),
-                SizedBox(width: 8),
-                Text(
-                  obs.value.isEmpty ? "Pilih $label" : obs.value,
-                  style: TextStyle(color: Colors.grey.shade600),
+        Icon(Icons.location_on_outlined,
+            color: AppStyles.dark, size: AppStyles.iconL),
+        SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: AppStyles.tiket1.copyWith(
+                  color: AppStyles.grey1,
+                  fontSize: 13
                 ),
-                Spacer(),
-                Icon(Icons.swap_vert, color: Colors.grey),
-              ],
-            ),
+              ),
+              SizedBox(height: 2),
+              Text(
+                obs.value.isEmpty ? "Pilih $label" : obs.value,
+                style: AppStyles.tiket2.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
         ),
       ],
     ));
   }
 
-  // IMAGE SLIDER
   Widget _imageSlider() {
     final sliderImages = [
       "images/green_bus.png",
@@ -239,8 +287,8 @@ class HomePage extends StatelessWidget {
             itemCount: controller.menus.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: crossAxisCount,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 16,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 5,
               childAspectRatio: 0.8,
             ),
             itemBuilder: (_, i) {
@@ -287,7 +335,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // PROMO CARD
+  // PROMO
   Widget _promoCard() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: AppStyles.paddingL),
@@ -298,7 +346,6 @@ class HomePage extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Bagian teks
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -312,7 +359,7 @@ class HomePage extends StatelessWidget {
                   "Berikan review untuk pengalaman perjalananmu bersama New Shantika",
                   style: AppStyles.promoDesc,
                 ),
-                SizedBox(height: AppStyles.spaceS),
+                SizedBox(height: AppStyles.spaceM),
                 ReuseButton(
                   text: "Beri Review",
                   isFullWidth: false,
@@ -320,17 +367,16 @@ class HomePage extends StatelessWidget {
                   backgroundColor: AppStyles.light,
                   textColor: AppStyles.primary,
                   borderColor: AppStyles.primary,
+                  fontSize: 12,
                 )
               ],
             ),
           ),
-
           SizedBox(width: AppStyles.spaceM),
-
           Image.asset(
             "images/stars.png",
-            width: 70,
-            height: 70,
+            width: 80,
+            height: 80,
           ),
         ],
       ),
@@ -346,46 +392,52 @@ class HomePage extends StatelessWidget {
         children: [
           Obx(() => Column(
             children: controller.history.map((item) {
-              return Container(
+              return CustomCardContainer(
                 margin: EdgeInsets.symmetric(vertical: AppStyles.paddingS),
-                padding: EdgeInsets.only(left: AppStyles.paddingL, right: AppStyles.paddingL, top: AppStyles.paddingM),
-                decoration: BoxDecoration(
-                  color: AppStyles.light,
-                  borderRadius: BorderRadius.circular(AppStyles.radiusL),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppStyles.dark.withOpacity(0.05),
-                      blurRadius: AppStyles.radiusS,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
+                padding: EdgeInsets.only(
+                  left: AppStyles.paddingL,
+                  right: AppStyles.paddingL,
                 ),
+                borderRadius: AppStyles.radiusL,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppStyles.dark.withOpacity(0.05),
+                    blurRadius: AppStyles.radiusS,
+                    offset: Offset(0, 4),
+                  ),
+                ],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Title + Button
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
                           child: Text(
                             item["title"] ?? "",
-                            style: AppStyles.tiket2.copyWith(fontWeight: FontWeight.w500)
+                            style: AppStyles.riwayat2.copyWith(
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                         ReuseButton(
                           text: "Beri Review",
                           fontSize: 12,
                           radius: 20,
+                          contentPadding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
                           isFullWidth: false,
                           onPressed: () {},
                         ),
                       ],
                     ),
+
                     Text(
                       item["date"] ?? "",
                       style: AppStyles.riwayat,
                     ),
                     SizedBox(height: AppStyles.spaceM),
+
+                    // From
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -394,10 +446,8 @@ class HomePage extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "${item["from"]}",
-                              style: AppStyles.riwayat2,
-                            ),
+                            Text("${item["from"]}",
+                                style: AppStyles.riwayat2),
                             Text("05:30", style: AppStyles.riwayat),
                           ],
                         ),
@@ -409,15 +459,14 @@ class HomePage extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(IconlyBold.location, color: AppStyles.secondary),
+                        Icon(IconlyBold.location,
+                            color: AppStyles.secondary),
                         SizedBox(width: 8),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "${item["to"]}",
-                              style: AppStyles.riwayat2,
-                            ),
+                            Text("${item["to"]}",
+                                style: AppStyles.riwayat2),
                             Text("09:30", style: AppStyles.riwayat),
                           ],
                         ),
@@ -427,10 +476,14 @@ class HomePage extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        "${item["price"]}",
-                        style: AppStyles.seeAll.copyWith(fontSize: 16, fontWeight: FontWeight.w500),
+                        "Rp ${item["price"]}",
+                        style: AppStyles.seeAll.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
+                    SizedBox(height: AppStyles.spaceM),
                   ],
                 ),
               );
@@ -438,6 +491,285 @@ class HomePage extends StatelessWidget {
           )),
         ],
       ),
+    );
+  }
+
+  Widget _promoSection() {
+    final promoList = [
+      {
+        "title": "Promo Mudik 2024",
+        "subtitle": "Potongan hingga Rp50.000",
+        "date": "28 April 2025",
+        "imagePath": "images/promo.png",
+      },
+      {
+        "title": "Promo Akhir Tahun",
+        "subtitle": "Diskon 20%",
+        "date": "31 Desember 2025",
+        "imagePath": "images/promo.png",
+      },
+    ];
+
+    return SizedBox(
+      height: 245,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: AppStyles.paddingL),
+        itemCount: promoList.length,
+        separatorBuilder: (_, __) => SizedBox(width: 12),
+        itemBuilder: (context, index) {
+          final promo = promoList[index];
+          return SizedBox(
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: _promoItem(
+              title: promo["title"]!,
+              subtitle: promo["subtitle"]!,
+              date: promo["date"]!,
+              imagePath: promo["imagePath"]!,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _promoItem({
+    required String title,
+    required String subtitle,
+    required String date,
+    required String imagePath,
+  }) {
+    return CustomCardContainer(
+      borderRadius: AppStyles.radiusXL,
+      padding: EdgeInsets.zero,
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(AppStyles.radiusL),
+              topRight: Radius.circular(AppStyles.radiusL),
+            ),
+            child: Image.asset(
+              imagePath,
+              height: 140,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(AppStyles.paddingM),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: AppStyles.spaceXS),
+                Text(
+                  title,
+                  style: AppStyles.menufav2.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: AppStyles.spaceXS),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        subtitle,
+                        style: AppStyles.riwayat.copyWith(
+                          color: AppStyles.secondary,
+                          fontSize: 14,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    SizedBox(width: AppStyles.spaceS),
+                    Icon(
+                      IconlyLight.calendar,
+                      size: AppStyles.iconL,
+                      color: AppStyles.dark,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      date,
+                      style: AppStyles.riwayat,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Artikel
+  Widget _artikel() {
+    return Obx(() => SizedBox(
+      height: 200,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.only(left: AppStyles.paddingL),
+        itemCount: controller.articles.length,
+        itemBuilder: (context, index) {
+          final article = controller.articles[index];
+          return _artikelCard(
+            imageUrl: article["image"] ?? "",
+            title: article["title"] ?? "",
+          );
+        },
+      ),
+    ));
+  }
+
+
+  Widget _artikelCard({required String imageUrl, required String title}) {
+    return Container(
+      width: 145,
+      margin: EdgeInsets.only(right: AppStyles.paddingM),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              imageUrl,
+              height: 140,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(height: AppStyles.spaceS),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppStyles.paddingXS),
+            child: Text(
+              title,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: AppStyles.menufav2.copyWith(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _testimoni() {
+    return Column(
+      children: controller.testimonials.map((t) {
+        final List<String> images =
+            (t["images"] as List<dynamic>?)?.map((e) => e as String).toList() ?? [];
+
+        return CustomCardContainer(
+          margin: EdgeInsets.symmetric(vertical: AppStyles.paddingS, horizontal: AppStyles.paddingM),
+          padding: EdgeInsets.all(AppStyles.paddingM),
+          borderRadius: AppStyles.radiusM,
+          backgroundColor: AppStyles.light,
+          boxShadow: [
+            BoxShadow(
+              color: AppStyles.dark.withOpacity(0.2),
+              blurRadius: AppStyles.radius,
+              offset: Offset(0, 2),
+            ),
+          ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    t["name"] as String? ?? "",
+                    style: AppStyles.menufav2.copyWith(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    t["date"] as String? ?? "",
+                    style: AppStyles.riwayat.copyWith(
+                      fontSize: 13,
+                      color: AppStyles.dark,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: AppStyles.spaceM),
+              Text(
+                t["busClass"] as String? ?? "",
+                style: AppStyles.riwayat,
+              ),
+              SizedBox(height: AppStyles.spaceM),
+              Row(
+                children: List.generate(
+                  5,
+                      (index) => Icon(
+                    index < (t["rating"] as int? ?? 0)
+                        ? IconlyBold.star
+                        : IconlyLight.star,
+                    color: AppStyles.stars,
+                    size: AppStyles.iconM,
+                  ),
+                ),
+              ),
+              SizedBox(height: AppStyles.spaceM),
+              Text(
+                t["review"] as String? ?? "",
+                style: AppStyles.riwayat.copyWith(
+                  fontSize: 14,
+                  height: 1.4,
+                ),
+              ),
+              SizedBox(height: AppStyles.spaceM),
+              if (images.isNotEmpty)
+                Row(
+                  children: [
+                    ...images.take(3).map((img) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 6),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            img,
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                    if (images.length > 3)
+                      Container(
+                        width: 50,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: AppStyles.grey2,
+                          borderRadius: BorderRadius.circular(AppStyles.radiusM),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "+${images.length - 3}",
+                            style: AppStyles.riwayat.copyWith(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    SizedBox(width: AppStyles.spaceS),
+                    Text("+2", style: AppStyles.menufav2.copyWith(fontWeight: FontWeight.w500))
+                  ],
+                ),
+            ],
+          ),
+        );
+      }).toList(),
     );
   }
 
