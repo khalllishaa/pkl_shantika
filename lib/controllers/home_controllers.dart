@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class HomeController extends GetxController {
   // form tiket
@@ -15,11 +17,11 @@ class HomeController extends GetxController {
 
   // Menu Favorit
   final menus = [
-    {"icon": Icons.confirmation_number, "title": "Pesan Tiket"},
-    {"icon": Icons.directions_bus, "title": " Informasi Kelas Armada"},
-    {"icon": Icons.info, "title": "Informasi Perusahaan"},
-    {"icon": Icons.shop, "title": " New Shantika Shop"},
-    {"icon": Icons.facebook, "title": "Sosial Media"},
+    {"icon": IconlyLight.ticket, "title": "Pesan Tiket"},
+    {"icon": Icons.directions_bus, "title": "Informasi Kelas Armada"},
+    {"icon": IconlyLight.info_square, "title": "Informasi Perusahaan"},
+    {"icon": IconlyLight.buy, "title": "New Shantika Shop"},
+    {"icon": FontAwesome.ticket_solid, "title": "Sosial Media"},
     {"icon": Icons.group, "title": "Informasi Agen"},
     {"icon": Icons.credit_card, "title": "E-Member"},
     {"icon": Icons.language, "title": "Website"},

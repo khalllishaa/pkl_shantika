@@ -9,10 +9,12 @@ class AppStyles{
   static const Color grey1 = Color(0xFF606060);
   static const Color grey2 = Color(0xFFE8E8E8);
   static const Color grey3 = Color(0xFF989696);
+  static const Color bottomnavc = Color(0xFF9E9E9E);
   static const Color primary = Color(0xFF292861);
   static const Color primary2 = Color(0xFF292860);
   static const Color secondary = Color(0xFF0C44FF);
   static const Color stars = Color(0xFFF8BA2C);
+  static const Color selengkapnya = Color(0xFFFF3800);
   static const gradientMenu = LinearGradient(
     colors: [Color(0xFF292861), Color(0xFF67717A)],
     begin: Alignment.topLeft,
@@ -26,8 +28,9 @@ class AppStyles{
 
 
   // Text Style
-  static final TextStyle bottomnav = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppStyles.primary);
-  static final TextStyle bottomnav2 = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppStyles.grey3);
+  static final TextStyle bottomnav = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppStyles.primary);
+  static final TextStyle bottomnav2 = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.normal, color: AppStyles.grey1);
+  static final TextStyle bottomnavunselected = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.normal, color: AppStyles.bottomnavc);
   static final TextStyle tiket1 = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppStyles.dark);
   static final TextStyle tiket2 = GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.normal, color: AppStyles.dark);
   static final TextStyle menufav = GoogleFonts.poppins(fontSize: 11, fontWeight: FontWeight.w500, color: AppStyles.dark);
@@ -38,6 +41,8 @@ class AppStyles{
   static final seeAll = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: secondary);
   static final riwayat = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppStyles.grey3);
   static final riwayat2 = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold, color: AppStyles.dark);
+  static final heading = GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500, color: AppStyles.dark);
+    static final search = GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppStyles.dark);
 
   // Image & widget
   static const double logo = 200.0;
@@ -79,10 +84,10 @@ class AppStyles{
   static const double spaceXS = 5.0;
   static const double spaceS = 10.0;
   static const double spaceM = 12.0;
-  static const double spaceL = 5.0;
+  static const double spaceL = 16.0;
   static const double space = 28.0;
   static const double spaceXL = 45.0;
-  static const double spaceXXL = 60.0;
+  static const double spaceXXL = 30.0;
   static const double spaceeXL = 190.0;
 
   // Border Radius
@@ -90,7 +95,7 @@ class AppStyles{
   static const double radiusM = 12.0;
   static const double radiusL = 10.0;
   static const double radiusXL = 20.0;
-  static const double radiussXL = 30.0;
+  static const double radiussL = 16.0;
   static const double radius = 40.0;
   static const double radiusXXL = 50.0;
 }
