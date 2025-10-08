@@ -42,7 +42,8 @@ class AppStyles{
   static final riwayat = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppStyles.grey3);
   static final riwayat2 = GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold, color: AppStyles.dark);
   static final heading = GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500, color: AppStyles.dark);
-    static final search = GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppStyles.dark);
+  static final search = GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppStyles.dark);
+  static final artikel = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppStyles.dark);
 
   // Image & widget
   static const double logo = 200.0;

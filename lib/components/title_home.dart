@@ -15,7 +15,6 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: AppStyles.paddingL,
         vertical: AppStyles.spaceS,
       ),
       child: Row(

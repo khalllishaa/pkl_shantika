@@ -4,6 +4,7 @@ import 'package:iconly/iconly.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 class HomeController extends GetxController {
+
   // form tiket
   var departure = "".obs;
   var arrival = "".obs;
@@ -39,13 +40,20 @@ class HomeController extends GetxController {
   ].obs;
 
   // Promo
-  var promos = [
+  final promoList = [
     {
       "title": "Promo Mudik 2024",
-      "desc": "Potongan hingga Rp50.000",
+      "subtitle": "Potongan hingga Rp50.000",
       "date": "28 April 2025",
-    }
-  ].obs;
+      "imagePath": "images/promo.png",
+    },
+    {
+      "title": "Promo Akhir Tahun",
+      "subtitle": "Diskon 20%",
+      "date": "31 Desember 2025",
+      "imagePath": "images/promo.png",
+    },
+  ];
 
   // Artikel
   var articles = <Map<String, String>>[
