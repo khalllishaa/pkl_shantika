@@ -4,7 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:pkl_sahntikha/components/app_styles.dart';
 import 'package:pkl_sahntikha/controllers/artikel_controller.dart';
 
-import '../components/custom_card.dart';
+import '../../components/custom_card.dart';
 
 class DetailArtikelPage extends StatelessWidget {
   final String title;
@@ -41,7 +41,7 @@ class DetailArtikelPage extends StatelessWidget {
       leadingWidth: AppStyles.spaceXL,
       backgroundColor: AppStyles.light,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios_new),
+        icon: Icon(Icons.arrow_back_rounded, size: AppStyles.iconXL, color: AppStyles.dark,),
         color: AppStyles.dark,
         onPressed: () => Get.back(),
       ),

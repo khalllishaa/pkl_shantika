@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:pkl_sahntikha/controllers/artikel_controller.dart';
-import 'package:pkl_sahntikha/pages/detail_artikel_page.dart';
-import '../components/app_styles.dart';
-import '../components/custom_card.dart';
+import '../../components/app_styles.dart';
+import '../../components/custom_card.dart';
+import 'detail_artikel_page.dart';
 
 class ArtikelPage extends StatelessWidget {
   final controller = ArtikelController();
@@ -39,7 +39,7 @@ PreferredSizeWidget _header() {
     leadingWidth: AppStyles.spaceXL,
     backgroundColor: AppStyles.light,
     leading: IconButton(
-      icon: Icon(Icons.arrow_back_ios_new),
+      icon: Icon(Icons.arrow_back_rounded, size: AppStyles.iconXL, color: AppStyles.dark,),
       color: AppStyles.dark,
       onPressed: () => Get.back(),
     ),

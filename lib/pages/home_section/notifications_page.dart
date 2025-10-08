@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
+import 'package:icons_plus/icons_plus.dart';
+
+import '../../components/app_styles.dart';
 
 class NotifikasiPage extends StatelessWidget {
-  const NotifikasiPage({super.key});
+  NotifikasiPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,39 +14,8 @@ class NotifikasiPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Get.back(),
-          ),
-          title: const Text(
-            'Notifikasi',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
-          ),
-          centerTitle: false,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(48),
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: const BoxDecoration(
-                border: Border(bottom: BorderSide(color: Colors.grey, width: 0.3)),
-              ),
-              child: const TabBar(
-                labelColor: Colors.blue,
-                unselectedLabelColor: Colors.grey,
-                indicatorColor: Colors.blue,
-                indicatorWeight: 2,
-                tabs: [
-                  Tab(text: 'Semua 16'),
-                  Tab(text: 'Belum Dibaca 7'),
-                ],
-              ),
-            ),
-          ),
-        ),
-        body: const TabBarView(
+        appBar: _header(),
+        body: TabBarView(
           children: [
             NotificationList(),
             NotificationList(),
@@ -52,6 +25,49 @@ class NotifikasiPage extends StatelessWidget {
     );
   }
 }
+
+  PreferredSizeWidget _header() {
+    return AppBar(
+      leadingWidth: AppStyles.spaceXL,
+      backgroundColor: AppStyles.light,
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back_rounded, size: AppStyles.iconXL, color: AppStyles.dark,),
+        color: AppStyles.dark,
+        onPressed: () => Get.back(),
+      ),
+      title: Text(
+        "Notifikasi",
+        style: AppStyles.heading,
+      ),
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(AppStyles.spaceXXL),
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: AppStyles.paddingL),
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.grey, width: 0.3)),
+          ),
+          child: TabBar(
+            labelColor: AppStyles.secondary,
+            unselectedLabelColor: AppStyles.grey3,
+            indicatorColor: AppStyles.secondary,
+            indicatorWeight: 2,
+            labelStyle: AppStyles.menufav2.copyWith(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+            ),
+            unselectedLabelStyle: AppStyles.seeAll.copyWith(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+            tabs: [
+              Tab(text: 'Semua 16'),
+              Tab(text: 'Belum Dibaca 7'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
 class NotificationList extends StatelessWidget {
   const NotificationList({super.key});
@@ -64,7 +80,7 @@ class NotificationList extends StatelessWidget {
         children: [
           _buildDateSection('8 Februari 2024'),
           _buildNotificationItem(
-            icon: Icons.local_offer_outlined,
+            icon: IconlyLight.ticket,
             title: 'Promo Tiket Murah Mudik 2025',
             subtitle: 'Yuk segera amankan tiket mudik mu sekarang juga sebelum kehabisan...',
             time: '10:00',
@@ -76,14 +92,14 @@ class NotificationList extends StatelessWidget {
             time: '10:00',
           ),
           _buildNotificationItem(
-            icon: Icons.confirmation_number_outlined,
+            icon: FontAwesome.money_bill_1,
             title: 'Segera Bayar Tiket yang sudah anda pesan',
             subtitle: 'Bayar tiket anda dan nikmati perjalanan bus new shantika',
             time: '10:00',
           ),
           _buildDateSection('8 Februari 2024'),
           _buildNotificationItem(
-            icon: Icons.local_offer_outlined,
+            icon: IconlyLight.ticket,
             title: 'Promo Tiket Murah Mudik 2025',
             subtitle: 'Yuk segera amankan tiket mudik mu sekarang juga sebelum kehabisan...',
             time: '10:00',
@@ -95,18 +111,17 @@ class NotificationList extends StatelessWidget {
             time: '10:00',
           ),
           _buildNotificationItem(
-            icon: Icons.confirmation_number_outlined,
+            icon: FontAwesome.money_bill_1,
             title: 'Segera Bayar Tiket yang sudah anda pesan',
             subtitle: 'Bayar tiket anda dan nikmati perjalanan bus new shantika',
             time: '10:00',
           ),
           _buildNotificationItem(
-            icon: Icons.confirmation_number_outlined,
+            icon: FontAwesome.money_bill_1,
             title: 'Segera Bayar Tiket yang sudah anda pesan',
             subtitle: 'Bayar tiket anda dan nikmati perjalanan bus new shantika',
             time: '10:00',
           ),
-          const SizedBox(height: 20),
         ],
       ),
     );
@@ -114,12 +129,12 @@ class NotificationList extends StatelessWidget {
 
   Widget _buildDateSection(String date) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: AppStyles.paddingL, vertical: AppStyles.paddingM),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(date, style: const TextStyle(fontWeight: FontWeight.w600)),
-          const Text('Baca Semua', style: TextStyle(color: Colors.blue)),
+          Text(date, style: AppStyles.menufav2),
+          Text('Baca Semua', style: AppStyles.seeAll),
         ],
       ),
     );
@@ -132,31 +147,52 @@ class NotificationList extends StatelessWidget {
     required String time,
   }) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppStyles.paddingM,
+        vertical: AppStyles.paddingM,
+      ),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade300, width: 0.8),
+        color: AppStyles.light,
+        border: Border(
+          bottom: BorderSide(color: AppStyles.grey3, width: 0.8),
+        ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: Colors.blue),
-          const SizedBox(width: 12),
+          Icon(icon, color: AppStyles.secondary, size: 28),
+          SizedBox(width: AppStyles.spaceM),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
-                const SizedBox(height: 4),
-                Text(subtitle, style: const TextStyle(color: Colors.grey, fontSize: 13)),
+                Text(
+                  title,
+                  style: AppStyles.artikel.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: AppStyles.spaceXS),
+                Text(
+                  subtitle,
+                  style: AppStyles.riwayat.copyWith(
+                    color: AppStyles.grey3,
+                  ),
+                ),
+                SizedBox(height: AppStyles.spaceM),
               ],
             ),
           ),
-          Text(time, style: const TextStyle(color: Colors.blue, fontSize: 12)),
+          Text(
+            time,
+            style: AppStyles.seeAll.copyWith(
+              fontSize: 12,
+              color: AppStyles.secondary,
+            ),
+          ),
         ],
       ),
     );
   }
+
 }

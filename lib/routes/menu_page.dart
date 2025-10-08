@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../components/bottom_nav.dart';
 import '../controllers/main_menu_controllers.dart';
 import '../pages/chat_page.dart';
-import '../pages/home_page.dart';
+import '../pages/home_section/home_page.dart';
 import '../pages/profile_page.dart';
 import '../pages/ticket_page.dart';
 
