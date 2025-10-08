@@ -4,10 +4,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:iconly/iconly.dart';
 import 'package:pkl_sahntikha/components/reuse_button.dart';
 import 'package:pkl_sahntikha/components/app_styles.dart';
-
-import '../components/custom_card.dart';
-import '../components/title_home.dart';
-import '../controllers/home_controllers.dart';
+import '../../components/custom_card.dart';
+import '../../components/title_home.dart';
+import '../../controllers/home_controllers.dart';
 import 'artikel_page.dart';
 import 'notifications_page.dart';
 
@@ -33,7 +32,8 @@ class HomePage extends StatelessWidget {
               _riwayats(),
               _promoSection(),
               _artikelSection(),
-              _testimoni(),
+              // _testimoni(),
+              _buildTestimoniView(context),
               SizedBox(height: AppStyles.spaceS),
             ],
           ),
@@ -542,8 +542,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
+    );}
 
   Widget _artikelSection() {
     return Padding(
@@ -764,4 +763,149 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget _buildTestimoniView(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppStyles.paddingL),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SectionTitle(title: "Testimoni"),
+              Text(
+                "Lihat Semua",
+                style: AppStyles.seeAll,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.37,
+            child: ListView.separated(
+              itemCount: 3,
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) {
+                return SizedBox(
+                  width: AppStyles.spaceM,
+                );
+              },
+              itemBuilder: (BuildContext context, int index) {
+                return CustomCardContainer(
+                  width: 320,
+                  margin: EdgeInsets.only(bottom: AppStyles.spaceM),
+                  borderColor: AppStyles.grey3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Esther Howard",
+                            style: AppStyles.menufav2.copyWith(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            "13 Feb 2025",
+                            style: AppStyles.riwayat.copyWith(
+                              fontSize: 13,
+                              color: AppStyles.dark,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: AppStyles.spaceS),
+                      Text(
+                        "Super Executive",
+                        style: AppStyles.riwayat,
+                      ),
+                      SizedBox(height: AppStyles.spaceXS),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: AppStyles.stars,
+                            size: AppStyles.iconM,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: AppStyles.stars,
+                            size: AppStyles.iconM,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: AppStyles.stars,
+                            size: AppStyles.iconM,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: AppStyles.stars,
+                            size: AppStyles.iconM,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: AppStyles.stars,
+                            size: AppStyles.iconM,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: AppStyles.spaceS),
+                      Text(
+                        "Sangat menyenangkan melakukan perjalanan bersama bus Shantika. Supirnya baik dan ramah, ACnya dingin, dan saya bisa tertidur pulas.",
+                        style: AppStyles.riwayat.copyWith(
+                          fontSize: 14,
+                          height: 1.4,
+                          color: AppStyles.dark
+                        ),
+                      ),
+                      SizedBox(height: AppStyles.spaceS),
+                      Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              "images/testimoni.png",
+                              width: 35,
+                              height: 35,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(width: AppStyles.spaceXS),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              "images/testimoni.png",
+                              width: 35,
+                              height: 35,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(width: AppStyles.spaceXS),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              "images/testimoni.png",
+                              width: 35,
+                              height: 35,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(width: AppStyles.spaceXS),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text("+2"),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
