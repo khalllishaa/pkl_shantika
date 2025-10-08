@@ -15,7 +15,6 @@ class Bottomnav extends StatelessWidget {
     return Obx(() => Container(
       margin: EdgeInsets.all(AppStyles.spaceXS),
       decoration: BoxDecoration(
-        color: AppStyles.light,
         // borderRadius: BorderRadius.circular(AppStyles.radiusS),
         boxShadow: [
           BoxShadow(
@@ -29,11 +28,11 @@ class Bottomnav extends StatelessWidget {
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppStyles.light,
-          elevation: 0,
+          // elevation: 0,
           currentIndex: controller.selectedIndex.value,
           onTap: controller.updateIndex,
           selectedLabelStyle: AppStyles.bottomnav.copyWith(fontWeight: FontWeight.w700),
-          unselectedLabelStyle: AppStyles.bottomnav2,
+          unselectedLabelStyle: AppStyles.bottomnavunselected,
           items: [
             BottomNavigationBarItem(
               icon: Icon(IconlyLight.home),
@@ -57,8 +56,8 @@ class Bottomnav extends StatelessWidget {
             ),
           ],
           selectedItemColor: AppStyles.primary,
-          unselectedItemColor: AppStyles.primary,
-          selectedFontSize: 14,
+          unselectedItemColor: AppStyles.grey3,
+          selectedFontSize: 12,
           unselectedFontSize: 12,
         ),
       ),

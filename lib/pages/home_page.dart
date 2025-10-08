@@ -8,6 +8,8 @@ import 'package:pkl_sahntikha/components/app_styles.dart';
 import '../components/custom_card.dart';
 import '../components/title_home.dart';
 import '../controllers/home_controllers.dart';
+import 'artikel_page.dart';
+import 'notifications_page.dart';
 
 class HomePage extends StatelessWidget {
   final controller = Get.put(HomeController());
@@ -63,12 +65,15 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   SectionTitle(title: "Artikel"),
-                  Spacer(),
+                  const Spacer(),
                   Padding(
                     padding: EdgeInsets.only(right: AppStyles.paddingL),
-                    child: Text(
-                      "Lihat Semua",
-                      style: AppStyles.seeAll,
+                    child: GestureDetector(
+                      onTap: () => Get.to(() => ArtikelPage()),
+                      child: Text(
+                        "Lihat Semua",
+                        style: AppStyles.seeAll,
+                      ),
                     ),
                   ),
                 ],
@@ -126,10 +131,15 @@ class HomePage extends StatelessWidget {
               Positioned(
                 top: 55,
                 right: 16,
-                child: Icon(
-                  Icons.notifications,
-                  color: AppStyles.light,
-                  size: 28,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => NotifikasiPage());
+                  },
+                  child: Icon(
+                    Icons.notifications,
+                    color: AppStyles.light,
+                    size: 28,
+                  ),
                 ),
               ),
             ],
@@ -196,9 +206,7 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-
           SizedBox(height: AppStyles.spaceS),
-
           // Button Cari Tiket
           ReuseButton(
             text: "Cari Tiket",
@@ -543,6 +551,7 @@ class HomePage extends StatelessWidget {
       borderRadius: AppStyles.radiusXL,
       padding: EdgeInsets.zero,
       width: double.infinity,
+      boxShadow: [],
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
