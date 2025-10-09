@@ -4,7 +4,6 @@ import 'package:iconly/iconly.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 class HomeController extends GetxController {
-
   // form tiket
   var departure = "".obs;
   var arrival = "".obs;
@@ -28,15 +27,18 @@ class HomeController extends GetxController {
     {"icon": Icons.language, "title": "Website"},
   ];
 
-  // Riwayat tiket
+  // 🔹 Riwayat tiket
   var history = [
     {
       "title": "Bus 10 • Executive Big Top",
       "from": "Krapyak - Semarang",
       "to": "Gejayan - Sleman",
-      "date": "11 Februari 2025 - 20:30",
+      "date": "11 Februari 2025",
+      "depart_time": "20:30",
+      "arrive_time": "23:45",
       "price": "230.000",
-    }
+      "status": "lunas",
+    },
   ].obs;
 
   // Promo

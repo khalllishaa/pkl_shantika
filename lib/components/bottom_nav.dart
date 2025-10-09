@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:iconly/iconly.dart';
-
 import '../controllers/main_menu_controllers.dart';
 import 'app_styles.dart';
 
@@ -10,12 +9,11 @@ class Bottomnav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainMenuController controller = Get.find();
+    final controller = Get.find<MainMenuController>();
 
     return Obx(() => Container(
       margin: EdgeInsets.all(AppStyles.spaceXS),
       decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(AppStyles.radiusS),
         boxShadow: [
           BoxShadow(
             color: AppStyles.dark.withOpacity(0.1),
@@ -28,39 +26,67 @@ class Bottomnav extends StatelessWidget {
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppStyles.light,
-          // elevation: 0,
           currentIndex: controller.selectedIndex.value,
           onTap: controller.updateIndex,
-          selectedLabelStyle: AppStyles.bottomnav.copyWith(fontWeight: FontWeight.w700),
+          selectedLabelStyle:
+          AppStyles.bottomnav.copyWith(fontWeight: FontWeight.w700),
           unselectedLabelStyle: AppStyles.bottomnavunselected,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.home),
-              activeIcon: Icon(IconlyBold.home),
-              label: 'Beranda',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.chat),
-              activeIcon: Icon(IconlyBold.chat),
-              label: 'Chat',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.ticket),
-              activeIcon: Icon(IconlyBold.ticket),
-              label: 'Ticket',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.profile),
-              activeIcon: Icon(IconlyBold.profile),
-              label: 'Profil',
-            ),
-          ],
           selectedItemColor: AppStyles.primary,
-          unselectedItemColor: AppStyles.grey3,
+          unselectedItemColor: AppStyles.light,
           selectedFontSize: 12,
           unselectedFontSize: 12,
+          items: [
+            _navItem(
+              index: 0,
+              controller: controller,
+              label: 'Beranda',
+              iconPath: 'images/icons/home_outline.svg',
+              activeIconPath: 'images/icons/home_fill.svg',
+            ),
+            _navItem(
+              index: 1,
+              controller: controller,
+              label: 'Chat',
+              iconPath: 'images/icons/chat_outline.svg',
+              activeIconPath: 'images/icons/chat_fill.svg',
+            ),
+            _navItem(
+              index: 2,
+              controller: controller,
+              label: 'Pesanan',
+              iconPath: 'images/icons/ticket_outline.svg',
+              activeIconPath: 'images/icons/ticket_fill.svg',
+            ),
+            _navItem(
+              index: 3,
+              controller: controller,
+              label: 'Profil',
+              iconPath: 'images/icons/profile_outline.svg',
+              activeIconPath: 'images/icons/profile_fill.svg',
+            ),
+          ],
         ),
       ),
     ));
+  }
+
+  BottomNavigationBarItem _navItem({
+    required int index,
+    required MainMenuController controller,
+    required String label,
+    required String iconPath,
+    required String activeIconPath,
+  }) {
+    final isActive = controller.selectedIndex.value == index;
+
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        isActive ? activeIconPath : iconPath,
+        width: 22,
+        height: 22,
+        color: isActive ? AppStyles.primary : AppStyles.grey3,
+      ),
+      label: label,
+    );
   }
 }

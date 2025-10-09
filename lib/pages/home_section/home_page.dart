@@ -306,6 +306,8 @@ class HomePage extends StatelessWidget {
                   textColor: AppStyles.primary,
                   borderColor: AppStyles.primary,
                   fontSize: 12,
+                  width: 109,
+                  // height: 28,
                 )
               ],
             ),
@@ -894,7 +896,7 @@ class HomePage extends StatelessWidget {
                           SizedBox(width: AppStyles.spaceXS),
                           Align(
                             alignment: Alignment.center,
-                            child: Text("+2"),
+                            child: Text("+2", style: AppStyles.tiket1),
                           ),
                         ],
                       ),

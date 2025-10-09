@@ -22,7 +22,7 @@ class CustomCardContainer extends StatelessWidget {
     this.padding,
     this.backgroundColor,
     this.gradient,
-    this.borderRadius = 16,
+    this.borderRadius = AppStyles.radiussL,
     this.border,
     this.boxShadow,
     this.margin,
@@ -54,7 +54,7 @@ class CustomCardContainer extends StatelessWidget {
         boxShadow ??
             [
               BoxShadow(
-                color: AppStyles.dark.withOpacity(0.3),
+                color: AppStyles.grey3.withOpacity(0.1),
                 blurRadius: 5,
                 offset: Offset(0, 3),
               ),

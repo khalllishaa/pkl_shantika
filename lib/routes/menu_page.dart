@@ -6,14 +6,14 @@ import '../controllers/main_menu_controllers.dart';
 import '../pages/chat_page.dart';
 import '../pages/home_section/home_page.dart';
 import '../pages/profile_page.dart';
-import '../pages/ticket_page.dart';
+import '../pages/pesanan_section/pesanan_page.dart';
 
 class MainMenu extends StatelessWidget {
 
   final List<Widget> pages = [
     HomePage(),
     ChatPage(),
-    TicketPage(),
+    PesananPage(),
     ProfilePage(),
   ];
    MainMenu({super.key}) {

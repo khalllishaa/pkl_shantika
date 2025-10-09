@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pkl_sahntikha/controllers/chat_contoller.dart';
-import 'package:pkl_sahntikha/controllers/ticket_controller.dart';
+import 'package:pkl_sahntikha/controllers/chat_controller.dart';
+import 'package:pkl_sahntikha/controllers/pesanan_controller.dart';
 
 import '../controllers/main_menu_controllers.dart';
 import '../controllers/profile_controller.dart';
@@ -20,8 +20,8 @@ class MainMenuBinding extends Bindings{
       Get.lazyPut(() => ChatController());
     }
 
-    if (!Get.isRegistered<TicketController>()) {
-      Get.lazyPut(() => TicketController());
+    if (!Get.isRegistered<PesananController>()) {
+      Get.lazyPut(() => PesananController());
     }
   }
 }
