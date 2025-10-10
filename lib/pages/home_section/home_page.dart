@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                 right: 16,
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => NotifikasiPage());
+                    Get.to(() => NoticationsPage());
                   },
                   child: Icon(
                     Icons.notifications,

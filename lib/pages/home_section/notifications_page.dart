@@ -5,8 +5,8 @@ import 'package:icons_plus/icons_plus.dart';
 
 import '../../components/app_styles.dart';
 
-class NotifikasiPage extends StatelessWidget {
-  NotifikasiPage({super.key});
+class NoticationsPage extends StatelessWidget {
+  NoticationsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

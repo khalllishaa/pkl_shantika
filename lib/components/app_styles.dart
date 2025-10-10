@@ -18,7 +18,9 @@ class AppStyles{
   static const Color selengkapnya = Color(0xFFFF3800);
   static const Color lunas = Color(0xFF8FC907);
   static const Color background = Color(0xFFF2F5FD);
+  static const Color card = Color(0xFFF5FBFF);
   static const Color logout = Color(0xFFFF3800);
+  static const Color error = Color(0xFFFEE4E2);
   static const gradientMenu = LinearGradient(
     colors: [Color(0xFF292861), Color(0xFF67717A)],
     begin: Alignment.topLeft,
@@ -48,24 +50,7 @@ class AppStyles{
   static final heading = GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500, color: AppStyles.dark);
   static final search = GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppStyles.dark);
   static final artikel = GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppStyles.dark);
-
-  // Image & widget
-  static const double logo = 200.0;
-  static const double logoHeading = 55.0;
-  static const double profile = 70.0;
-  static const double categoryLineHeight = 64.0;
-  static const double categoryLineHeightt = 90.0;
-  static const double categoryImageSize = 80.0;
-  static const double cardWidth = 280.0;
-  static const double detailIconSize = 45.0;
-  static const double IconSize = 90.0;
-  static const double bottomNavHeight = 90.0;
-  static const double classCardHeight = 126.0;
-  static const double detailHeaderHeight = 100.0;
-  static const double detailHeaderRadius = 50.0;
-  static const double teacherHeight = 100.0;
-  static const double classCard = 310.0;
-  static const double classCard2 = 130.0;
+  static final shantika = GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.w600, color: AppStyles.dark);
 
   // Icon Sizes
   static const double iconS = 20.0;
@@ -85,12 +70,15 @@ class AppStyles{
   static const double paddingXXL = 30.0;
 
   // Spacing
-  static const double spaceXXS = 2.0;
+  static const double spaceXXXS = 4.0;
+  static const double spaceXXS = 8.0;
   static const double spaceXS = 5.0;
   static const double spaceS = 10.0;
   static const double spaceM = 12.0;
   static const double spaceL = 16.0;
-  static const double space = 28.0;
+  static const double space = 32.0;
+  static const double spaceprofile = 6.0;
+  static const double spacename = 24.0;
   static const double spaceXL = 45.0;
   static const double spaceXXL = 48.0;
   static const double spaceeXL = 190.0;

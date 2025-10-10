@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
 import 'package:pkl_sahntikha/components/app_styles.dart';
 import 'package:pkl_sahntikha/components/custom_card.dart';
 import 'package:pkl_sahntikha/components/reuse_button.dart';
+import 'package:pkl_sahntikha/controllers/profile_controller.dart';
+import 'package:pkl_sahntikha/pages/profile_section/faq_page.dart';
+import 'package:pkl_sahntikha/pages/profile_section/notifikasi_page.dart';
+import 'package:pkl_sahntikha/pages/profile_section/snk_page.dart';
+import 'package:pkl_sahntikha/pages/profile_section/tentang_kami_page.dart';
+
+import '../home_section/notifications_page.dart';
+import 'informasi_pribadi_page.dart';
+import 'kebijakan_privasi_page.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  final controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +30,8 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: AppStyles.spaceL),
+
+              // Profile Picture
               CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('images/profile.png'),
@@ -43,62 +59,79 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   children: [
                     _menuItem(
-                      icon: Icons.person_outline,
+                      svgIcon: 'images/icons/profile.svg',
                       text: "Informasi Pribadi",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => InformasiPribadiPage());
+                      },
                     ),
                     SizedBox(height: AppStyles.spaceS),
 
                     _menuItem(
-                      icon: Icons.notifications_none,
+                      svgIcon: 'images/icons/notif.svg',
                       text: "Notifikasi",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => NotifikasiPage());
+                      },
                     ),
                     SizedBox(height: AppStyles.spaceS),
 
                     _menuItem(
-                      icon: Icons.info_outline,
+                      svgIcon: 'images/icons/info.svg',
                       text: "Tentang Kami",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => TentangKamiPage());
+                      },
                     ),
                     SizedBox(height: AppStyles.spaceS),
 
                     _menuItem(
-                      icon: Icons.shield_outlined,
+                      svgIcon: 'images/icons/check.svg',
                       text: "Kebijakan Privasi",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => KebijakanPrivasiPage());
+                      },
                     ),
                     SizedBox(height: AppStyles.spaceS),
 
                     _menuItem(
-                      icon: Icons.description_outlined,
+                      svgIcon: 'images/icons/note.svg',
                       text: "Syarat dan Ketentuan",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => SnkPage());
+                      },
                     ),
                     SizedBox(height: AppStyles.spaceS),
 
                     _menuItem(
-                      icon: Icons.help_outline,
+                      svgIcon: 'images/icons/faq.svg',
                       text: "FAQ",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => FAQPage());
+                      },
                     ),
                     SizedBox(height: AppStyles.spaceS),
 
                     _menuItem(
-                      icon: Icons.star_outline,
+                      svgIcon: 'images/icons/stars.svg',
                       text: "Beri Nilai App Kami",
                       trailing: Text(
                         "Versi 1.20.5",
                         style: AppStyles.riwayat.copyWith(fontSize: 12),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        // Launch app store or play store
+                      },
                     ),
                     SizedBox(height: AppStyles.spaceL),
 
                     // Logout Button
                     ReuseButton(
-                        text: "Keluar Akun",
-                        onPressed: (){},
+                      text: "Keluar Akun",
+                      onPressed: () {
+                        controller.logout();
+                        // Logout logic here
+                      },
                       backgroundColor: AppStyles.logout,
                       radius: AppStyles.radiusL,
                     ),
@@ -141,7 +174,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget _menuItem({
-    required IconData icon,
+    required String svgIcon,
     required String text,
     Widget? trailing,
     required VoidCallback onTap,
@@ -159,16 +192,20 @@ class ProfilePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppStyles.radiussL),
         child: Row(
           children: [
-            Icon(
-              icon,
-              color: AppStyles.dark,
-              size: 24,
+            SvgPicture.asset(
+              svgIcon,
+              width: 24,
+              height: 24,
+              colorFilter: ColorFilter.mode(
+                AppStyles.dark,
+                BlendMode.srcIn,
+              ),
             ),
             SizedBox(width: AppStyles.spaceM),
             Expanded(
               child: Text(
                 text,
-                style: AppStyles.menufav2
+                style: AppStyles.menufav2,
               ),
             ),
             if (trailing != null) ...[
