@@ -17,6 +17,8 @@ class AppStyles{
   static const Color stars = Color(0xFFF8BA2C);
   static const Color selengkapnya = Color(0xFFFF3800);
   static const Color lunas = Color(0xFF8FC907);
+  static const Color background = Color(0xFFF2F5FD);
+  static const Color logout = Color(0xFFFF3800);
   static const gradientMenu = LinearGradient(
     colors: [Color(0xFF292861), Color(0xFF67717A)],
     begin: Alignment.topLeft,
