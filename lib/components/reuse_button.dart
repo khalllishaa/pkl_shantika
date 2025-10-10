@@ -47,9 +47,12 @@ class ReuseButton extends StatelessWidget {
           side: BorderSide(color: borderColor),
         ),
         elevation: 0,
-        alignment: Alignment.center, // 🔥 ini biar teks tetep di tengah
-      ),
-      child: Center( // 🔥 pastiin teks di tengah juga
+        alignment: Alignment.center,
+        minimumSize: Size(
+          isFullWidth ? double.infinity : 0,
+          height ?? 48,
+        ),      ),
+      child: Center(
         child: Text(
           text,
           textAlign: TextAlign.center,

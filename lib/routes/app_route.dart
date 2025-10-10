@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:pkl_sahntikha/pages/chat_page.dart';
-import 'package:pkl_sahntikha/pages/profile_page.dart';
+import 'package:pkl_sahntikha/pages/profile_section/profile_page.dart';
 import 'package:pkl_sahntikha/pages/pesanan_section/pesanan_page.dart';
 import 'package:pkl_sahntikha/routes/menu_page.dart';
 
