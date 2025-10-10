@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pkl_sahntikha/pages/chat_page.dart';
 import 'package:pkl_sahntikha/pages/profile_page.dart';
-import 'package:pkl_sahntikha/pages/ticket_page.dart';
+import 'package:pkl_sahntikha/pages/pesanan_section/pesanan_page.dart';
 import 'package:pkl_sahntikha/routes/menu_page.dart';
 
 import '../bindings/menu_binding.dart';
@@ -18,7 +18,7 @@ class AppPages {
   static final pages = [
     GetPage(name: Routes.main, page: () => MainMenu(), binding: MainMenuBinding()),
     GetPage(name: Routes.chat, page: () => ChatPage()),
-    GetPage(name: Routes.ticket, page: () => TicketPage()),
+    GetPage(name: Routes.ticket, page: () => PesananPage()),
     GetPage(name: Routes.profile, page: () => ProfilePage()),
   ];
 }
