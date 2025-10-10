@@ -94,8 +94,8 @@ class PesananPage extends StatelessWidget {
                           Expanded(
                             child: Text(
                               item["title"] ?? "",
-                              style: AppStyles.riwayat2.copyWith(
-                                  fontWeight: FontWeight.w500),
+                              style: AppStyles.menufav2.copyWith(
+                                  fontWeight: FontWeight.w700),
                             ),
                           ),
                           IntrinsicWidth(
@@ -132,7 +132,7 @@ class PesananPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("${item["from"]}",
-                                  style: AppStyles.riwayat2.copyWith(fontWeight: FontWeight.w600)),
+                                  style: AppStyles.menufav2.copyWith(fontWeight: FontWeight.w700)),
                               Text("${item["depart_time"]}", style: AppStyles.riwayat),
                             ],
                           ),
@@ -148,7 +148,7 @@ class PesananPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("${item["to"]}",
-                                  style: AppStyles.riwayat2.copyWith(fontWeight: FontWeight.w600)),
+                                  style: AppStyles.menufav2.copyWith(fontWeight: FontWeight.w600)),
                               Text("${item["arrive_time"]}", style: AppStyles.riwayat),
                             ],
                           ),
